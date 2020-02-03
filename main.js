@@ -1,6 +1,7 @@
 // select DOM elements
 const draggableList = document.getElementById('draggable-list')
 const check = document.getElementById('check')
+const reset = document.getElementById('reset')
 
 const richestPeople = [
   'Jeff Bezos',
@@ -88,4 +89,27 @@ function swapItems(start, end) {
   // use appendChild to swap the DOM 
   listItems[start].appendChild(itemTwo)
   listItems[end].appendChild(itemOne)
+}
+
+// check if the answers are correct
+
+check.addEventListener('click', checkAnswer)
+
+function checkAnswer() {
+  listItems.forEach((item, index) => {
+    if (listItems[index].querySelector('.draggable p').innerText === richestPeople[index]) {
+      item.classList.add('right')
+    } else {
+      item.classList.add('wrong')
+    }
+    item.querySelector('.draggable').setAttribute('draggable', false)
+  })
+}
+
+// reset game
+
+reset.addEventListener('click', resetGame)
+
+function resetGame() {
+  location.reload();
 }

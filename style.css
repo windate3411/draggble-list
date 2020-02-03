@@ -69,19 +69,20 @@ body {
   flex: 1;
 }
 
-.check {
+.button-container button {
   background-color: #c3c7c8;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   color: #34444f;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.check:active {
+.button-container button:active {
   transform: scale(0.9);
 }
 
-.check:focus {
+.button-container button:focus {
   outline: none;
 }
