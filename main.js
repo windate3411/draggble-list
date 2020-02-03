@@ -31,7 +31,7 @@ function creatList() {
       listItem.setAttribute('data-index', index);
       listItem.innerHTML = `
       <span class="number">${index + 1}</span>
-      <div class="draggble" draggble="true">
+      <div class="draggable" draggable="true">
         <p class="person-name">${item}</p>
         <i class="fas fa-grip-lines"></i>
       </div>
