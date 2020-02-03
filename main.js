@@ -24,17 +24,19 @@ let dragStartIndex;
 creatList();
 
 function creatList() {
-  [...richestPeople].forEach((item, index) => {
-    const listItem = document.createElement('li')
-    listItem.setAttribute('data-index', index);
-    listItem.innerHTML = `
+  [...richestPeople]
+    .sort(() => Math.random() - 0.5)
+    .forEach((item, index) => {
+      const listItem = document.createElement('li')
+      listItem.setAttribute('data-index', index);
+      listItem.innerHTML = `
       <span class="number">${index + 1}</span>
       <div class="draggble" draggble="true">
         <p class="person-name">${item}</p>
         <i class="fas fa-grip-lines"></i>
       </div>
       `;
-    listItems.push(listItem);
-    draggableList.appendChild(listItem)
-  });
+      listItems.push(listItem);
+      draggableList.appendChild(listItem)
+    });
 }
