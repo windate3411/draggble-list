@@ -39,4 +39,53 @@ function creatList() {
       listItems.push(listItem);
       draggableList.appendChild(listItem)
     });
+  addEventListener()
+}
+// functions control drag events
+
+function dragstart() {
+  // add a plus sign makes it a number
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
+}
+
+function dragover(e) {
+  // prevent default event
+  e.preventDefault();
+}
+
+function dragdrop() {
+  const dragEndIndex = +this.getAttribute('data-index')
+  swapItems(dragStartIndex, dragEndIndex)
+  this.classList.remove('over');
+}
+
+function dragenter() {
+  this.classList.add('over');
+}
+
+function dragleave() {
+  this.classList.remove('over');
+}
+
+function addEventListener() {
+  const draggables = document.querySelectorAll('.draggable')
+  const dragListItems = document.querySelectorAll('.draggable-list li')
+
+  draggables.forEach(item => item.addEventListener('dragstart', dragstart))
+
+  dragListItems.forEach(item => {
+    item.addEventListener('dragover', dragover);
+    item.addEventListener('drop', dragdrop);
+    item.addEventListener('dragenter', dragenter);
+    item.addEventListener('dragleave', dragleave);
+  })
+}
+
+// swap the items
+function swapItems(start, end) {
+  const itemOne = listItems[start].querySelector('.draggable');
+  const itemTwo = listItems[end].querySelector('.draggable');
+  // use appendChild to swap the DOM 
+  listItems[start].appendChild(itemTwo)
+  listItems[end].appendChild(itemOne)
 }
